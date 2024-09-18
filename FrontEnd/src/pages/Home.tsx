@@ -1,4 +1,3 @@
-import MainLayout from './components/MainLayout';
 import { Equipment, Category } from './inventory/Inventory';
 import { useEffect, useState } from 'react';
 import { useAxios } from '../contexts/AxiosContext';
@@ -50,43 +49,41 @@ export default function Home() {
   }).slice(0, 6);
 
   return (
-    <MainLayout>
-      <div className="container mt-5">
-        <h1 className='mb-4'>Home</h1>
-        <div className="mb-3">
-          <label htmlFor="sortCriteria" className="form-label">Ordenar por:</label>
-          <select id="sortCriteria" className="form-select" value={sortCriteria} onChange={handleSortChange}>
-            <option value="">Seleccionar</option>
-            <option value="name">Nombre</option>
-            <option value="priceAsc">Precio (Menor a Mayor)</option>
-            <option value="priceDesc">Precio (Mayor a Menor)</option>
-            <option value="stock">Cantidad</option>
-            <option value="category">Categoría</option>
-            <option value="status">Estado</option>
-            <option value="location">Ubicación</option>
-          </select>
-        </div>
-        <div className="row">
-          {sortedEquipments.map((equipment: Equipment) => (
-            <div className="col-md-4 mb-4" key={equipment._id}>
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">{equipment.name}</h5>
-                  <p className="card-text">{equipment.description}</p>
-                  <p className="card-text"><strong>Serial Number:</strong> {equipment.serialNumber}</p>
-                  <p className="card-text"><strong>Category:</strong> {getCategoryName(equipment.category)}</p>
-                  <p className="card-text"><strong>Status:</strong> {equipment.status}</p>
-                  <p className="card-text"><strong>Location:</strong> {equipment.location}</p>
-                  <p className="card-text"><strong>Purchase Date:</strong> {new Date(equipment.purchaseDate).toLocaleDateString()}</p>
-                  <img src={equipment.image} alt={equipment.name} className="img-fluid" />
-                  <p className="card-text"><strong>Price:</strong> {equipment.price}</p>
-                  <p className="card-text"><strong>Stock:</strong> {equipment.stock}</p>
-                </div>
+    <div className="container mt-5">
+      <h1 className='mb-4'>Home</h1>
+      <div className="mb-3">
+        <label htmlFor="sortCriteria" className="form-label">Ordenar por:</label>
+        <select id="sortCriteria" className="form-select" value={sortCriteria} onChange={handleSortChange}>
+          <option value="">Seleccionar</option>
+          <option value="name">Nombre</option>
+          <option value="priceAsc">Precio (Menor a Mayor)</option>
+          <option value="priceDesc">Precio (Mayor a Menor)</option>
+          <option value="stock">Cantidad</option>
+          <option value="category">Categoría</option>
+          <option value="status">Estado</option>
+          <option value="location">Ubicación</option>
+        </select>
+      </div>
+      <div className="row">
+        {sortedEquipments.map((equipment: Equipment) => (
+          <div className="col-md-4 mb-4" key={equipment._id}>
+            <div className="card">
+              <div className="card-body">
+                <h5 className="card-title">{equipment.name}</h5>
+                <p className="card-text">{equipment.description}</p>
+                <p className="card-text"><strong>Serial Number:</strong> {equipment.serialNumber}</p>
+                <p className="card-text"><strong>Category:</strong> {getCategoryName(equipment.category)}</p>
+                <p className="card-text"><strong>Status:</strong> {equipment.status}</p>
+                <p className="card-text"><strong>Location:</strong> {equipment.location}</p>
+                <p className="card-text"><strong>Purchase Date:</strong> {new Date(equipment.purchaseDate).toLocaleDateString()}</p>
+                <img src={equipment.image} alt={equipment.name} className="img-fluid" />
+                <p className="card-text"><strong>Price:</strong> {equipment.price}</p>
+                <p className="card-text"><strong>Stock:</strong> {equipment.stock}</p>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
-    </MainLayout>
+    </div>
   )
 }

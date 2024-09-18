@@ -1,6 +1,7 @@
 import { useAxios } from '../../../contexts/AxiosContext';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 declare global {
     interface Window {
@@ -34,8 +35,8 @@ export default function AddNewCategory({ onCategoryCreated }: AddNewCategoryProp
         try {
             const response = await axios.post('http://localhost:4000/api/categories', formData);
             onCategoryCreated(response.data);
-            setFormData({});
             toast.success('Category created successfully');
+            setFormData({});
             const collapseElement = document.getElementById('flush-collapseOne');
             if (collapseElement) {
                 const collapse = new window.bootstrap.Collapse(collapseElement, {

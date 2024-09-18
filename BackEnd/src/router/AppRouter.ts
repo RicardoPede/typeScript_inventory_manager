@@ -4,6 +4,7 @@ import { AuthRoutes } from '../auth/auth.routes';
 import { EquipmentRoutes } from '../equipment/equipment.routes';
 import { CategoryRoutes } from '../category/category.routes';
 import { MovementHistoryRoutes } from '../movementHistory/movementHistory.routes';
+import { MakeRoutes } from '../make/make.routes';
 import { UserService } from '../users/user.service';
 import { GetUserMiddleware } from '../middlewares/getUser.middleware';
 import { ValidRoles } from '../users/interface';
@@ -24,9 +25,11 @@ export class AppRouter {
 
         router.use('/api/equipments', getUser.getUser, EquipmentRoutes.routes);
         
-        router.use('/api/categories', getUser.getUser, CategoryRoutes.routes);
+        router.use('/api/categories', CategoryRoutes.routes);
 
         router.use('/api/movementHistory', getUser.getUser, getUser.checkRole([ValidRoles.ADMIN]), MovementHistoryRoutes.routes);
+
+        router.use('/api/make', MakeRoutes.routes);
 
         return router;
    };

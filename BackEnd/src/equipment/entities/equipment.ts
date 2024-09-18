@@ -2,6 +2,7 @@ import { Schema, model, Document } from "mongoose";
 
 export interface IEquipment extends Document {
     name: string;
+    make: Schema.Types.ObjectId;
     description: string;
     serialNumber: string;
     category: Schema.Types.ObjectId;
@@ -15,6 +16,7 @@ export interface IEquipment extends Document {
 
 const EquipmentSchema = new Schema({
     name: { type: String, required: true },
+    make: { type: Schema.Types.ObjectId, ref: 'Make', required: true },
     description: { type: String, required: true },
     serialNumber: { type: String, required: true, unique: true },
     category: { type: Schema.Types.ObjectId, ref: 'Category', required: true },

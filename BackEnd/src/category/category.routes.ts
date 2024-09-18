@@ -22,9 +22,9 @@ export class CategoryRoutes {
 
         router.get('/', categoryController.findAll.bind(categoryController));
         router.get('/:id', categoryController.findOne.bind(categoryController));
-        router.post('/', getUser.checkRole([ValidRoles.ADMIN]), createCategorySchema, validator, categoryController.create.bind(categoryController));
-        router.put('/:id', getUser.checkRole([ValidRoles.ADMIN]), updateCategorySchema, validator, categoryController.update.bind(categoryController));
-        router.delete('/:id', getUser.checkRole([ValidRoles.ADMIN]), categoryController.remove);
+        router.post('/', createCategorySchema, validator, categoryController.create.bind(categoryController));
+        router.put('/:id', updateCategorySchema, validator, categoryController.update.bind(categoryController));
+        router.delete('/:id', categoryController.remove);
 
         return router;
     }
