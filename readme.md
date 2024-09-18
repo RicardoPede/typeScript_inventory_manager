@@ -201,3 +201,25 @@ React Router: Para manejar la navegación entre diferentes páginas.
 Axios: Para hacer solicitudes HTTP al backend.
 React Hook Form: Para manejar formularios de manera eficiente.
 React Toastify: Para mostrar notificaciones.
+
+# Ejecucion:
+### Backend
+.emv
+```bash
+PORT=4000
+MONGO_URL=mongodb://localhost:27017
+DB_HOST=localhost
+DB_PORT=27017
+DB_NAME=inventory_manager
+DB_USER=root
+DB_PASSWORD=root
+JWT_SECRET=secret
+```
+
+***
+***
+# FORMOTEX
+Posisionarse en la carpeta del proyecto Backend y ejecutar el siguiente comando:
+```bash
+npm run all
+```
