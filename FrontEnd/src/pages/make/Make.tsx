@@ -12,7 +12,11 @@ interface Make {
     name: string;
 }
 
-const MakeList: React.FC = () => {
+interface MakeProps {
+    toast: typeof toast;
+}
+
+const MakeList: React.FC<MakeProps> = ({ toast }) => {
     const dispatch: AppDispatch = useDispatch();
     const { makes, loading, error } = useSelector((state: AppState) => state.make);
     const [newMake, setNewMake] = React.useState<Make | null>(null);
@@ -34,7 +38,6 @@ const MakeList: React.FC = () => {
 
     const handleMakeCreated = (_newMake: Make) => {
         setNewMake(_newMake);
-        toast.success('Make created successfully');
     }
 
     if (loading) return <p>Loading...</p>;

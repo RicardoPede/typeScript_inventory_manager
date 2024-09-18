@@ -7,13 +7,17 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AddNewCategory from './components/AddNewCategory';
 
+interface CategoryProps {
+    toast: typeof toast;
+}
+
 export interface Categories {
     _id: string;
     name: string;
     description: string;
 }
 
-const CategoryPage: React.FC = () => {
+const CategoryPage: React.FC<CategoryProps> = ({ toast }) => {
     const dispatch: AppDispatch = useDispatch();
     const { categories, loading, error } = useSelector((state: AppState) => state.category);
     const [newCategory, setNewCategory] = React.useState<Categories | null>(null);
@@ -35,7 +39,6 @@ const CategoryPage: React.FC = () => {
 
     const handleCategoryCreated = (_newCategory: Categories) => {
         setNewCategory(_newCategory);
-        toast.success('Category created successfully');
     }
 
     if (loading) return <p>Loading...</p>;

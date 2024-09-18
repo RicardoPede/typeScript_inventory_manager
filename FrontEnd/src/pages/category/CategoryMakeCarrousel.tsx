@@ -1,6 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -27,10 +27,10 @@ const CategoryMakeCarousel: React.FC = () => {
             <ToastContainer />
             <Slider {...settings}>
                 <div className="bg-success border w-100" style={{ width: '100%' }}>
-                    <Category />
+                    <Category toast={toast}/>
                 </div>
                 <div className="bg-warning border w-100" style={{ width: '100%' }}>
-                    <Make />
+                    <Make toast={toast}/>
                 </div>
             </Slider>
         </div>
