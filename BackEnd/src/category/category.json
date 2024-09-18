@@ -1,0 +1,72 @@
+[
+  {
+    "id": "1",
+    "name": "Laptops",
+    "description": "Portátiles de diversas marcas y modelos",
+    "createdAt": "2023-10-01T00:00:00Z",
+    "updatedAt": "2023-10-01T00:00:00Z"
+  },
+  {
+    "id": "2",
+    "name": "Desktops",
+    "description": "Computadoras de escritorio",
+    "createdAt": "2023-10-01T00:00:00Z",
+    "updatedAt": "2023-10-01T00:00:00Z"
+  },
+  {
+    "id": "3",
+    "name": "Monitors",
+    "description": "Monitores de diferentes tamaños y resoluciones",
+    "createdAt": "2023-10-01T00:00:00Z",
+    "updatedAt": "2023-10-01T00:00:00Z"
+  },
+  {
+    "id": "4",
+    "name": "Keyboards",
+    "description": "Teclados mecánicos y de membrana",
+    "createdAt": "2023-10-01T00:00:00Z",
+    "updatedAt": "2023-10-01T00:00:00Z"
+  },
+  {
+    "id": "5",
+    "name": "Mice",
+    "description": "Ratones ópticos y láser",
+    "createdAt": "2023-10-01T00:00:00Z",
+    "updatedAt": "2023-10-01T00:00:00Z"
+  },
+  {
+    "id": "6",
+    "name": "Printers",
+    "description": "Impresoras láser y de inyección de tinta",
+    "createdAt": "2023-10-01T00:00:00Z",
+    "updatedAt": "2023-10-01T00:00:00Z"
+  },
+  {
+    "id": "7",
+    "name": "Scanners",
+    "description": "Escáneres de documentos y fotos",
+    "createdAt": "2023-10-01T00:00:00Z",
+    "updatedAt": "2023-10-01T00:00:00Z"
+  },
+  {
+    "id": "8",
+    "name": "Networking",
+    "description": "Equipos de red como routers y switches",
+    "createdAt": "2023-10-01T00:00:00Z",
+    "updatedAt": "2023-10-01T00:00:00Z"
+  },
+  {
+    "id": "9",
+    "name": "Storage",
+    "description": "Dispositivos de almacenamiento como discos duros y SSDs",
+    "createdAt": "2023-10-01T00:00:00Z",
+    "updatedAt": "2023-10-01T00:00:00Z"
+  },
+  {
+    "id": "10",
+    "name": "Accessories",
+    "description": "Accesorios diversos como cables y adaptadores",
+    "createdAt": "2023-10-01T00:00:00Z",
+    "updatedAt": "2023-10-01T00:00:00Z"
+  }
+]
