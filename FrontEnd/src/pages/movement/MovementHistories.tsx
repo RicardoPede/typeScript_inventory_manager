@@ -25,7 +25,7 @@ const MovementHistoryPage: React.FC = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get('http://localhost:4000/api/movementHistory')
+        axios.get('/movementHistory')
             .then(response => setMovements(response.data))
             .catch(error => console.error('Error fetching movement history:', error));
     }, []);

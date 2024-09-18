@@ -30,7 +30,7 @@ const RegisterMovement: React.FC = () => {
     const { user } = useSelector((state: AppState) => state.auth);
 
     useEffect(() => {
-        axios.get('http://localhost:4000/api/equipments')
+        axios.get('/equipments')
             .then(response => setEquipment(response.data))
             .catch(error => console.error('Error fetching equipments:', error));
     }, []);

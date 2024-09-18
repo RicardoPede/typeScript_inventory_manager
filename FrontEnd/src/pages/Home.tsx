@@ -9,11 +9,11 @@ export default function Home() {
   const [sortCriteria, setSortCriteria] = useState<string>('');
 
   useEffect(() => {
-    axios.get('http://localhost:4000/api/equipments')
+    axios.get('/equipments')
       .then(response => setEquipments(response.data))
       .catch(error => console.error('Error fetching equipments: ', error));
 
-    axios.get('http://localhost:4000/api/categories')
+    axios.get('/categories')
       .then(response => setCategories(response.data))
       .catch(error => console.error('Error fetching categories: ', error));
   }, []);

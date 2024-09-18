@@ -31,17 +31,17 @@ export default function Inventory() {
     const [editingEquipment, setEditingEquipment] = useState<Equipment | null>(null);
 
     useEffect(() => {
-        axios.get("http://localhost:4000/api/equipments")
+        axios.get("/equipments")
             .then(response => setEquipments(response.data))
             .catch(error => console.log("Error fetching equipments: " + error.message));
 
-        axios.get("http://localhost:4000/api/categories")
+        axios.get("/categories")
             .then(response => setCategories(response.data))
             .catch(error => console.error('Error fetching categories: ', error));
     }, []);
 
     const deleteEquipment = (id: string) => {
-        axios.delete(`http://localhost:4000/api/equipments/${id}`)
+        axios.delete(`/equipments/${id}`)
             .then(() => {
                 setEquipments(equipments.filter(equipment => equipment._id !== id))
                 toast.success('Equipment deleted successfully');
@@ -58,7 +58,7 @@ export default function Inventory() {
     }
 
     const updateEquipment = (updatedEquipment: Equipment) => {
-        axios.put(`http://localhost:4000/api/equipments/${updatedEquipment._id}`, updatedEquipment)
+        axios.put(`/equipments/${updatedEquipment._id}`, updatedEquipment)
             .then(() => {
                 setEquipments(equipments.map(equipment =>
                     equipment._id === updatedEquipment._id ? updatedEquipment : equipment

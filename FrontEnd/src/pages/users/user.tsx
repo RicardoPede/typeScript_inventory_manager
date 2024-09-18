@@ -24,11 +24,11 @@ const Users = () => {
 
     useEffect(() => {
         fetchUsers();
-    }, []);
+    }, [axios]);
 
     const fetchUsers = async () => {
         try {
-            const response = await axios.get('http://localhost:4000/api/users');
+            const response = await axios.get('/users');
             setUsers(response.data);
         } catch (error) {
             console.error('Error fetching users:', error);
@@ -38,10 +38,10 @@ const Users = () => {
     const handleCreateOrUpdateUser = async (user: IUser) => {
         try {
             if (isEditing && user._id) {
-                await axios.put(`http://localhost:4000/api/users/${user._id}`, user);
+                await axios.put(`/users/${user._id}`, user);
                 toast.success('User updated successfully');
             } else {
-                await axios.post('http://localhost:4000/api/users', user);
+                await axios.post('/users', user);
                 toast.success('User created successfully');
             }
             fetchUsers();
@@ -54,7 +54,7 @@ const Users = () => {
 
     const handleDeleteUser = async (id: string) => {
         try {
-            await axios.delete(`http://localhost:4000/api/users/${id}`);
+            await axios.delete(`/users/${id}`);
             toast.success('User deleted successfully');
             fetchUsers();
         } catch (error) {

@@ -1,4 +1,4 @@
-import axios from "axios";
+import { useAxios } from "../contexts/AxiosContext";
 import { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../store/slices/authSlice";
@@ -9,6 +9,7 @@ import { User } from "../store/slices/authSlice";
 import { Button, Form, Container, Row, Col } from 'react-bootstrap';
 
 export default function Login() {
+    const axios = useAxios();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate: NavigateFunction = useNavigate();
@@ -17,7 +18,7 @@ export default function Login() {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:4000/api/auth/login', {
+            const response = await axios.post('/auth/login', {
                 username,
                 password
             });
@@ -35,12 +36,8 @@ export default function Login() {
                 toast.error('Error al iniciar sesión');
             }
         } catch (error: any) {
-            if (axios.isAxiosError(error)) {
                 toast.error(`Error: ${error.response?.data.message || error.message}`);
-            } else {
                 console.error('Error desconocido: ', error);
-                toast.error('Error en el inicio de sesión');
-            }
         }
     }
 

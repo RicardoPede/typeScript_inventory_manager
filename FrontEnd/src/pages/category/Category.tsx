@@ -20,6 +20,7 @@ export interface Categories {
 const CategoryPage: React.FC<CategoryProps> = ({ toast }) => {
     const dispatch: AppDispatch = useDispatch();
     const { categories, loading, error } = useSelector((state: AppState) => state.category);
+    console.log(categories);
     const [newCategory, setNewCategory] = React.useState<Categories | null>(null);
 
     useEffect(() => {
@@ -29,7 +30,6 @@ const CategoryPage: React.FC<CategoryProps> = ({ toast }) => {
     const handleDelete = (id: string) => {
         dispatch(deleteCategory(id))
             .then(() => {
-                // setCategories(categories.filter(category => category._id !== id));
                 toast.success('Category deleted successfully');
             })
             .catch((error: Error) => {
@@ -55,7 +55,7 @@ const CategoryPage: React.FC<CategoryProps> = ({ toast }) => {
                 </div>
             </div>
             <div className="row">
-                {categories.map((category: Categories) => (
+                {Array.isArray(categories) && categories.map(category => (
                     <div className="col-md-4 mb-4" key={category._id}>
                         <div className="card">
                             <div className="card-body">

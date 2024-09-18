@@ -52,7 +52,7 @@ export const { login, logout, registerSuccess } = authSlice.actions;
 
 export const register = (formData: any) => async (dispatch: any) => {
   try {
-    const response = await axios.post('http://localhost:4000/api/auth/register', formData);
+    const response = await axios.post('/auth/register', formData);
     dispatch(registerSuccess({ user: response.data.user, token: response.data.token }));
     return response.data;
   } catch (error) {

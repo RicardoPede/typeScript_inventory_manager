@@ -11,8 +11,6 @@ interface AxiosProviderProps {
     children: ReactNode;
 }
 
-
-
 export const AxiosProvider: React.FC<AxiosProviderProps> = ({ children }) => {
     const token = useSelector((state: AppState) => state.auth.token);
 

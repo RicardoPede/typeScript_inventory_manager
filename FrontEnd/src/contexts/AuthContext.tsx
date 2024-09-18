@@ -1,15 +1,16 @@
-import axios from "axios";
+import { useAxios } from "./AxiosContext";
 import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext({} as AuthContextData);
 
 export const AuthProvider = ({ children }: any) => {
+    const axios = useAxios();
     const [user, setUser] = useState<User | null>(localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') as string) : null);
     const [token, setToken] = useState<string | null>(localStorage.getItem('token'));
 
     const register = async (formData: any) => {
         try {
-            const response = await axios.post('http://localhost:4000/api/auth/register', formData);
+            const response = await axios.post('/auth/register', formData);
             console.log('response', response);
             setUser(response.data.user.username);
             setToken(response.data.token);

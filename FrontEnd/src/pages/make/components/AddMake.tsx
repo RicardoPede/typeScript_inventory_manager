@@ -33,7 +33,7 @@ export default function AddNewMake({ onMakeCreated }: AddNewMakeProps) {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:4000/api/make', formData);
+            const response = await axios.post('/make', formData);
             onMakeCreated(response.data);
             setFormData({});
             toast.success('Make added successfully');

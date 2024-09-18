@@ -54,7 +54,7 @@ const MakeList: React.FC<MakeProps> = ({ toast }) => {
                     </div>
             </div>
             <div className="row">
-                {makes.map(make => (
+                {Array.isArray(makes) && makes.map(make => (
                     <div className="col-md-4 mb-4" key={make._id}>
                         <div className="card">
                             <div className="card-body">

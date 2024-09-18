@@ -18,7 +18,7 @@ const AddNewEquipment: React.FC<AddNewEquipmentProps> = ({ onEquipmentCreated })
     const [formData, setFormData] = useState<Partial<Equipment>>({});
 
     useEffect(() => {
-        axios.get('http://localhost:4000/api/categories')
+        axios.get('/categories')
             .then(response => {
                 console.log('Fetched categories:', response.data); // Verifica que los datos incluyen _id
                 setCategories(response.data);
@@ -36,7 +36,7 @@ const AddNewEquipment: React.FC<AddNewEquipmentProps> = ({ onEquipmentCreated })
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:4000/api/equipments', formData);
+            const response = await axios.post('/equipments', formData);
             onEquipmentCreated(response.data);
             setFormData({});
             toast.success('Equipo creado exitosamente');

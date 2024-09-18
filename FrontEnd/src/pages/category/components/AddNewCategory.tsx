@@ -33,7 +33,7 @@ export default function AddNewCategory({ onCategoryCreated }: AddNewCategoryProp
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:4000/api/categories', formData);
+            const response = await axios.post('/categories', formData);
             onCategoryCreated(response.data);
             toast.success('Category created successfully');
             setFormData({});
