@@ -6,6 +6,7 @@ import { createEquipmentSchema, updateEquipmentSchema } from './schemas/equipmen
 import { UserService } from '../users/user.service';
 import { GetUserMiddleware } from '../middlewares/getUser.middleware';
 import { ValidRoles } from '../users/interface';
+import { Inventory } from './Inventory';
 
 export class EquipmentRoutes {
 
@@ -16,8 +17,9 @@ export class EquipmentRoutes {
         const userService = new UserService();
         const getUser = new GetUserMiddleware(userService)
 
+        const inventory = new Inventory();
         const equipmentService = new EquipmentService();
-        const equipmentController = new EquipmentController(equipmentService);
+        const equipmentController = new EquipmentController(equipmentService, inventory);
         const validator = ExpressValidatorAdapter.validate;
 
         router.get('/', getUser.getUser, equipmentController.findAll);

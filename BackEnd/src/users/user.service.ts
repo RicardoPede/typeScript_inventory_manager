@@ -1,6 +1,8 @@
 import { User } from "./entities/user";
 import { IUser, IUserService } from "./interface/user.interface";
 import { BcryptAdapter } from "../helpers/bcrypt";
+import UserFactory from "./UserFactory";
+import { ValidRoles } from "./interface";
 
 export class UserService implements IUserService {
     
@@ -12,9 +14,11 @@ export class UserService implements IUserService {
     }
 
     // se define un método create que recibe un usuario y devuelve una promesa de tipo IUser
-    async create(user: IUser): Promise<IUser> { 
-        const hashedPassword = await BcryptAdapter.hash(user.password!);
-        const newUser = new User({ ...user, password: hashedPassword });
+    async create(userData: IUser): Promise<IUser> { 
+        const userRole = userData.role ? userData.role : ValidRoles.USER;
+        const hashedPassword = await BcryptAdapter.hash(userData.password!);
+        const user = UserFactory.createUser(userRole);
+        const newUser = new User({ ...userData, password: hashedPassword, role: user.role });
         return (await newUser.save()).toObject() as unknown as IUser;
     };  
 

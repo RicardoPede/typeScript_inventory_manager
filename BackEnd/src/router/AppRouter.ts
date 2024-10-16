@@ -8,6 +8,8 @@ import { MakeRoutes } from '../make/make.routes';
 import { UserService } from '../users/user.service';
 import { GetUserMiddleware } from '../middlewares/getUser.middleware';
 import { ValidRoles } from '../users/interface';
+import { EquipmentService } from '../equipment/equipment.service';
+import { EquipmentController } from '../equipment/equipment.controller';
 
 export class AppRouter {
    static get routes(): Router {

@@ -1,8 +1,16 @@
 import { Request, Response } from "express";
 import { EquipmentService } from "./equipment.service";
+import { Inventory } from "./Inventory";
+import { InventoryObserver } from "./InventoryObserver";
 
 export class EquipmentController {
-    constructor(private equipmentService: EquipmentService) { }
+    constructor(
+        private equipmentService: EquipmentService,
+        private inventory: Inventory
+    ) {
+        const observer = new InventoryObserver();
+        this.inventory.addObserver(observer);
+    }
 
     handleError = (error: any, res: Response) => {
         if (error.code === 11000) {
@@ -22,6 +30,9 @@ export class EquipmentController {
             }
             
             const newEquipment = await this.equipmentService.create(equipment, userId);
+            
+            this.inventory.addEquipment(newEquipment);
+            
             res.status(201).json(newEquipment);
         } catch (error) {
             this.handleError(error, res);

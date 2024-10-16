@@ -2,6 +2,13 @@ import express, { Router, Application, NextFunction } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import errorHandler from './middlewares/errorHandler';
+import { Inventory } from './equipment/Inventory';
+import { EquipmentService } from './equipment/equipment.service';
+import { EquipmentController } from './equipment/equipment.controller';
+
+const inventory = new Inventory();
+const equipmentService = new EquipmentService();
+const equipmentController = new EquipmentController(equipmentService, inventory);
 
 interface IServerConfig {
     port: number;

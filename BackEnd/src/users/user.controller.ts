@@ -1,8 +1,21 @@
 import { Request, Response } from "express";
 import { UserService } from "./user.service";
+import { Inventory } from "../equipment/Inventory";
+import { InventoryObserver } from "../equipment/InventoryObserver";
 
 export class UserController {
-    constructor(private userService: UserService) { }
+    constructor(
+        private userService: UserService,
+        private inventory: Inventory
+    ) {
+        inventory = new Inventory();
+        const observer = new InventoryObserver();
+        this.inventory.addObserver(observer);
+    }
+
+    addNewEquipment(equipment: any) {
+        this.inventory.addEquipment(equipment);
+    }
 
     handleError = (error: any, res: Response) => {
         if (error.code === 11000) {
